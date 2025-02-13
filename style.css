@@ -1,0 +1,480 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ff758f;
+}
+
+.container {
+    position: relative;
+}
+
+.valentines {
+    position: relative;
+    top: 50px;
+    cursor: pointer;
+    animation: up 3s linear infinite;
+}
+
+@keyframes up {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: #f08080;
+}
+
+.envelope:before {
+    background-color: #f08080;
+    content: "";
+    position: absolute;
+    width: 212px;
+    height: 212px;
+    transform: rotate(45deg);
+    top: -105px;
+    left: 44px;
+    border-radius: 30px 0 0 0;
+}
+
+
+.text {
+    position: absolute;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 28px;
+    text-align: center;
+    line-height: 25px;
+    top: 19px;
+    left: 85px;
+    color: #003049;
+}
+
+
+.birds {
+    position: absolute;
+    z-index: 9999;
+}
+
+.one,
+.two,
+.three,
+.four,
+.five {
+    background-color: red;
+    display: inline-block;
+    height: 10px;
+    margin: 0 10px;
+    position: relative;
+    transform: rotate(-45deg);
+    width: 10px;
+    top: 50px;
+}
+
+.one:before,
+.one:after,
+.two:before,
+.two:after,
+.three:before,
+.three:after,
+.four:before,
+.four:after,
+.five:before,
+.five:after {
+    content: "";
+    background-color: red;
+    border-radius: 50%;
+    height: 10px;
+    position: absolute;
+    width: 10px;
+}
+
+.one:before,
+.two:before,
+.three:before,
+.four:before,
+.five:before {
+    top: -5px;
+    left: 0;
+}
+
+.one:after,
+.two:after,
+.three:after,
+.four:after,
+.five:after {
+    left: 5px;
+    top: 0;
+}
+
+.one {
+    left: 15px;
+    animation: bird 1s ease-out infinite;
+}
+
+.two {
+    left: 30px;
+    animation: bird 2s ease-out infinite;
+}
+
+.three {
+    left: 50px;
+    animation: bird 1.5s ease-out infinite;
+}
+
+.four {
+    left: 70px;
+    animation: bird 2.3s ease-out infinite;
+}
+
+.five {
+    left: 120px;
+    animation: bird 1.7s ease-out infinite;
+}
+
+@keyframes bird {
+    0% {
+        transform: translateY(0) rotate(-45deg) scale(0.3);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-150px) rotate(-45deg) scale(1.3);
+        opacity: 0.5;
+    }
+}
+
+.front {
+    position: absolute;
+    border-right: 180px solid #f4978e;
+    border-top: 95px solid transparent;
+    border-bottom: 100px solid transparent;
+    left: 120px;
+    top: 5px;
+    width: 0;
+    height: 0;
+    z-index: 9999;
+}
+
+.front:before {
+    position: absolute;
+    content: "";
+    border-left: 300px solid #f8ad9d;
+    border-top: 195px solid transparent;
+    left: -120px;
+    top: -95px;
+    width: 0;
+    height: 0;
+}
+
+.shadow {
+    position: absolute;
+    width: 330px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 265px;
+    left: -15px;
+    animation: scale 3s linear infinite;
+    z-index: -1;
+}
+
+@keyframes scale {
+
+    0%,
+    100% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(0.85);
+    }
+}
+
+/* Initially Hide the Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(250, 225, 221, 0.9);
+    /* Soft pink transparent */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #d62828;
+    font-family: 'Brush Script MT', cursive;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Spinner Animation */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #d62828;
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.card {
+    position: absolute;
+    background-color: #eae2b7;
+    width: 270px;
+    height: 170px;
+    top: 5px;
+    left: 5px;
+    box-shadow: -5px -5px 100px rgba(0, 0, 0, 0.4);
+    background-image: url('resources/cardboard-texture.jpg');
+    /* Correct file path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    user-select: none;
+    /* Prevents text selection */
+    outline: none;
+}
+
+.card:before {
+    content: "";
+    position: absolute;
+    border-style: none;
+    width: 240px;
+    height: 140px;
+    /* Fixed typo: 'heighT' to 'height' */
+    left: 12px;
+    top: 12px;
+}
+
+.valentines-day-card {
+    position: absolute;
+    width: 275px;
+    height: 170px;
+    /* top: 180px; */
+    /* Adjusted to avoid overlap with .card */
+    background-color: #ff8fa3;
+    overflow: hidden;
+    border: 5px solid white;
+    /* border-radius: 10px; */
+    box-shadow: 0 0 100px rgba(0, 0, 0, .4);
+}
+
+.valentines-day-card:before {
+    content: "";
+    position: absolute;
+    background-color: #ffb3c1;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    top: 100px;
+    left: -20px;
+    box-shadow: 40px 15px #ffb3c1, 90px 10px #ffb3c1, 130px 15px #ffb3c1, 180px -5px #ffb3c1, 240px 15px #ffb3c1;
+}
+
+.valentines-day-card:after {
+    content: "";
+    position: absolute;
+    background-color: #ffccd5;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    top: 110px;
+    left: -30px;
+    box-shadow: 35px 15px #ffccd5, 85px 30px #ffccd5, 140px 10px #ffccd5, 180px 20px #ffccd5, 230px 20px #ffccd5, 270px 10px #ffccd5;
+}
+
+.clouds {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #fff0f3;
+    z-index: 5;
+    top: 150px;
+    left: -15px;
+    box-shadow: 40px 20px #fff0f3, 90px 10px #fff0f3, 130px 15px #fff0f3, 180px 10px #fff0f3, 230px 5px #fff0f3, 270px 10px #fff0f3;
+}
+
+.hearts {
+    position: absolute;
+    z-index: 99;
+}
+
+.heartOne {
+    position: absolute;
+    left: 80px;
+    top: 140px;
+    animation: up 4s linear forwards 1s;
+}
+
+.heartTwo {
+    position: absolute;
+    left: 190px;
+    top: 80px;
+    animation: up 5s linear forwards 1.8s;
+}
+
+.heartThree {
+    position: absolute;
+    left: 36px;
+    top: 84px;
+    animation: up 5s linear forwards 3s;
+}
+
+.heartFour {
+    position: absolute;
+    left: 220px;
+    top: 110px;
+    animation: upTwo 9s linear infinite 3.5s;
+}
+
+.heartFive {
+    position: absolute;
+    left: 150px;
+    top: 110px;
+    animation: upTwo 13s linear infinite 4.5s;
+}
+
+.right-side:before,
+.right-side:after {
+    position: absolute;
+    content: "";
+    transform-origin: left;
+    animation: move 1s ease infinite;
+}
+
+.right-side:before {
+    border-radius: 50% 50% 50% 0;
+    width: 15px;
+    height: 15px;
+    background-color: #c9184a;
+    left: -0.2px;
+}
+
+.right-side:after {
+    height: 0;
+    width: 0;
+    border-bottom: 7px solid transparent;
+    border-left: 10px solid #c9184a;
+    top: 14px;
+    left: -0.2px;
+}
+
+@keyframes move {
+
+    0%,
+    100% {
+        transform: rotateY(0);
+    }
+
+    50% {
+        transform: rotateY(-45deg);
+    }
+}
+
+.left-side:before,
+.left-side:after {
+    position: absolute;
+    content: "";
+    transform-origin: right;
+    animation: move 1s ease infinite;
+}
+
+.left-side:before {
+    border-radius: 50% 50% 0 50%;
+    width: 15px;
+    height: 15px;
+    left: -15.5px;
+    background-color: #ff4d6d;
+}
+
+.left-side:after {
+    height: 0;
+    width: 0;
+    left: -10px;
+    border-bottom: 7px solid transparent;
+    border-right: 10px solid #ff4d6d;
+    top: 14px;
+}
+
+/* 
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-150px);
+    }
+} */
+
+@keyframes upTwo {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-80px);
+    }
+}
+
+.text {
+    position: absolute;
+    color: #800f2f;
+    font-size: 2rem;
+    font-family: 'allura', cursive;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    width: 250px;
+    left: 5px;
+    z-index: 999;
+    top: 70px;
+}
+
+.hover {
+    color: white;
+
+    font-family: 'allura', cursive;
+    text-align: center;
+}
+
+.text:hover span {
+    display: none;
+}
+
+.text:hover:before {
+    content: "Open your letter";
+    font-size: 2rem;
+}
